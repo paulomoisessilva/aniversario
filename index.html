@@ -97,11 +97,33 @@
             </div>
         </div>
     </div>
+    <div class="waitasec" id="w">
+        <img src="wait.gif" alt="" class="img">
+    </div>
 </body>
+<style>
+    .waitasec{
+        background-color: rgba(223, 157, 37,.7);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+    }
+    .img {
+        display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30vh;
+  height: 40vh;
+    }
+</style>
 <script src="script.js"></script>
 <script>
     function enviar(e) {
         e.preventDefault()
+        $("#w").show()
         var dados = []
         dados.push($("#nome").val())
         dados.push($("#telefone").val())
@@ -112,6 +134,7 @@
             send(env)
         } else {
             alert("Preencha os dados antes de confirmar!")
+            $("#w").hide()
         }
     }
 
@@ -120,6 +143,7 @@
         var env1 = JSON.stringify(env) 
         var url = "https://script.google.com/macros/s/AKfycbySoxBbvHKN81mV2gV6GZnoDu1xppnwqizwvnuoFGiMI_uZpKhf/exec?d=" + env1
         $.getJSON(url, function (x) {
+            $("#w").hide()
             if (x.auth) {
                 alert("Presença confirmada! Conto com você lá!")
                 $("#nome").val("")
