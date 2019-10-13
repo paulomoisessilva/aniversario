@@ -35,10 +35,15 @@ input {
     text-align: center;
 }
 
+
 @media only screen and (max-width: 600px) {
     .centro {
         width: 100%;
         border-radius: 0px;
+    }
+    .main {
+         background-attachment: fixed;
+         height: auto;
     }
 }
 @media only screen and (max-width: 2100px) {
